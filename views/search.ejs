@@ -1,0 +1,40 @@
+<%- include('includes/head.ejs'); %>
+
+<body>
+    <header>
+        <%- include('includes/nav.ejs'); %>
+    </header>
+
+    <main>
+        <section class="searchWrapper active">
+            <article class="form">
+                <form action="" method="POST" name="movieSearchForm">
+                    <label for="searchField">Search:</label>
+                    <input type="text" placeholder="Search for a movie" name="searchMovieName" id="searchFieldID"
+                        class="searchField">
+                    <input type="submit" class="searchBtn" value="search">
+                </form>
+            </article>
+            <article class="searchResultsWrapper">
+                <h2 class="searchHeading">Search resulst for <%= searchMovie %></h2>
+                <div class="searchResults">
+                    <% for (let i = 0; i < data.length; i++) { %>
+                    <a href="/movies/<%= data[i].id%>">
+                        <div id="<%= data[i].title %>" class="movie">
+                            <h4>
+                                <%= data[i].title %>
+                            </h4>
+                            <div class="movie-zoom">
+                                <img src="<%=data[i].poster_path%>" alt="poster image">
+                            </div>
+                        </div>
+
+                    </a>
+                    <% } %>
+                    <!-- renders data here  -->
+                </div>
+            </article>
+        </section>
+    </main>
+    <%- include('includes/scripts.ejs'); %>
+</body>
