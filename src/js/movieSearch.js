@@ -12,7 +12,6 @@ function updateSearch() {
     let search = document.querySelector('.searchField').value;
     storage.setItem('searching', search);
     setSearchBar();
-
 }
 
 // set searchbar with latest search item

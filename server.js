@@ -10,6 +10,8 @@ const port = 4000;
 // import routes
 const home = require('./routes/home');
 const search = require('./routes/search');
+const searchDetail = require('./routes/searchDetail');
+const searchRedirect = require('./routes/searchRedirect');
 const movies = require('./routes/movies');
 const movieDetail = require('./routes/movieDetail');
 const notFound = require('./routes/404');
@@ -29,11 +31,14 @@ app
 
     .get("/", home) // Routing
     .get("/search", search) // Routing
-    .get("/movies", movies)
-    .get('/movies/:id', movieDetail)
+    .get('/search/:id', searchDetail) // Routing
+    .get("/movies", movies) // Routing
+    .get('/movies/:id', movieDetail) // Routing
 
-    .post("/", home) // Routing
-    .post("/search", search) // Routing
+
+    .post("/", searchRedirect) // Routing
+    .post("/search", searchRedirect) // Routing
+    .post('/search/:id', searchRedirect) // Routing
 
     .use(notFound) // 404 page
     .listen(port, () => {

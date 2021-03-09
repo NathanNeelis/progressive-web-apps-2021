@@ -3,7 +3,6 @@ const filterObject = require('../utils/transformObject');
 const removeGarbage = require('../utils/imageRequired');
 const getData = require('../utils/getData');
 
-
 async function home(req, res) {
     try {
 
@@ -24,6 +23,7 @@ async function home(req, res) {
         const cleanData = removeGarbage(incomingData.results); // REMOVE DATA WITH NO IMAGES
         const transformData = filterObject(cleanData); // TRANSFORM OBJECT TO OBJECT WITH ITEMS I'LL USE
         const data = transformData;
+
 
         res.render("home.ejs", {
             data: data,

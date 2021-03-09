@@ -15,7 +15,6 @@
                     <input type="submit" class="searchBtn" value="search">
                 </form>
             </article>
-            <% if (searchItem) { %>
             <article class="searchResultsWrapper">
                 <h2 class="searchHeading">Search resulst for <%= searchMovie %></h2>
                 <div class="searchResults">
@@ -35,12 +34,6 @@
                     <!-- renders data here  -->
                 </div>
             </article>
-            <% } else { %>
-            <div>
-                <!-- No data  -->
-            </div>
-            <% } %>
-
         </section>
     </main>
     <%- include('includes/scripts.ejs'); %>
