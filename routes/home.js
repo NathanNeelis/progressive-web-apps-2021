@@ -1,12 +1,14 @@
-const fetch = require('node-fetch');
+// Imports 
 const filterObject = require('../utils/transformObject');
 const removeGarbage = require('../utils/imageRequired');
+const getData = require('../utils/getData');
+
 
 async function home(req, res) {
     try {
-        const endpoint = 'https://api.themoviedb.org/3'; // base url
 
         // endpoint variables
+        const endpoint = 'https://api.themoviedb.org/3'; // base url
         const discover = '/discover';
         const movie = '/movie?';
         const key = 'api_key=172dbac1b2ced3673820d2a54c969fe1'; // api key
@@ -17,10 +19,10 @@ async function home(req, res) {
         let url = '';
         url = endpoint + discover + movie + key + language + sort + page;
 
-        const fetchResponse = await fetch(url);
-        const json = await fetchResponse.json();
-        const cleanData = removeGarbage(json.results);
-        const transformData = filterObject(cleanData);
+        // getting the data and transforming
+        const incomingData = await getData(url); // FETCH THE DATA
+        const cleanData = removeGarbage(incomingData.results); // REMOVE DATA WITH NO IMAGES
+        const transformData = filterObject(cleanData); // TRANSFORM OBJECT TO OBJECT WITH ITEMS I'LL USE
         const data = transformData;
 
         res.render("home.ejs", {

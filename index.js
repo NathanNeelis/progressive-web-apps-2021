@@ -4,14 +4,13 @@ const express = require('express');
 const bodyParser = require("body-parser"); // load body parser for http requests
 const app = express();
 const port = 4000;
-const fetch = require('node-fetch');
 
 // imports
-const filterObject = require('./utils/transformObject');
 
 // import routes
 const home = require('./routes/home');
 const search = require('./routes/search')
+const notFound = require('./routes/404')
 
 
 app
@@ -31,8 +30,3 @@ app
     .listen(port, () => {
         console.log(`Server is working at http://localhost:${port}`)
     });
-
-// 404 error -> make a 404 page here
-function notFound(req, res) {
-    res.status(404).send("404 page to make");
-}

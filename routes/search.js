@@ -1,6 +1,7 @@
-const fetch = require('node-fetch');
+// imports 
 const filterObject = require('../utils/transformObject');
 const removeGarbage = require('../utils/imageRequired');
+const getData = require('../utils/getData');
 
 //search page
 async function search(req, res) {
@@ -17,10 +18,10 @@ async function search(req, res) {
     let search = req.body.searchMovieName
     let searchUrl = endpoint + searching + movie + key + language + adult + preSearch + search;
 
-    const fetchResponse = await fetch(searchUrl);
-    const json = await fetchResponse.json();
-    const cleanData = removeGarbage(json.results);
-    const transformData = filterObject(cleanData);
+    // getting the data and transforming
+    const incomingData = await getData(searchUrl); // FETCH THE DATA
+    const cleanData = removeGarbage(incomingData.results); // REMOVE DATA WITH NO IMAGES
+    const transformData = filterObject(cleanData); // TRANSFORM OBJECT TO OBJECT WITH ITEMS I'LL USE
     const data = transformData;
 
     res.render("search.ejs", {

@@ -1,9 +1,8 @@
 setSearchBar()
-// lookForMovie()
-
 
 const searchButton = document.querySelector('.searchBtn');
 searchButton.addEventListener("click", updateSearch);
+
 
 
 function updateSearch() {
