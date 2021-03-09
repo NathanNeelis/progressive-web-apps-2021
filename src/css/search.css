@@ -1,0 +1,34 @@
+.searchHeading {
+    padding: 2rem;
+}
+
+.searchResults a {
+    text-decoration: none;
+}
+
+/* Search field  */
+.searchResults {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 3rem;
+}
+
+.searchResults a {
+    width: 23%;
+    margin: 1rem .5rem;
+}
+
+.searchWrapper {
+    max-width: calc(100vw - 20em);
+    min-width: calc(50em - 10em);
+    margin: auto;
+    display: none;
+}
+
+.searchWrapper.active {
+    display: block;
+}

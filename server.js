@@ -10,6 +10,8 @@ const port = 4000;
 // import routes
 const home = require('./routes/home');
 const search = require('./routes/search');
+const movies = require('./routes/movies');
+const movieDetail = require('./routes/movieDetail');
 const notFound = require('./routes/404');
 
 
@@ -20,12 +22,19 @@ app
             extended: true,
         })
     )
+
+
     .set('view engine', 'ejs') // templating engine = ejs
     .set('views', 'views') // find the views in views(route)
+
     .get("/", home) // Routing
-    .post("/", home) // Routing
     .get("/search", search) // Routing
+    .get("/movies", movies)
+    .get('/movies/:id', movieDetail)
+
+    .post("/", home) // Routing
     .post("/search", search) // Routing
+
     .use(notFound) // 404 page
     .listen(port, () => {
         console.log(`Server is working at http://localhost:${port}`)

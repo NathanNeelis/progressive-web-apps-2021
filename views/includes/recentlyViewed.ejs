@@ -1,0 +1,18 @@
+<section class="recentlyViewed active">
+    <h2>Recently Viewed movies</h2>
+    <article class='viewedMovies'>
+        <!-- renders data here  -->
+        <% for (let i = 0; i < data.length; i++) { %>
+        <a href="/movies/<%= data[i].id%>">
+            <div id="<%= data[i].title %>" class="movie">
+                <h4>
+                    <%= data[i].title %>
+                </h4>
+                <div class="movie-zoom">
+                    <img src="<%=data[i].poster_path%>" alt="poster image">
+                </div>
+            </div>
+        </a>
+        <% } %>
+    </article>
+</section>

@@ -1,0 +1,21 @@
+.topTwenty::-webkit-scrollbar,
+.viewedMovies::-webkit-scrollbar {
+    background: transparent;
+    height: 10px;
+}
+
+.topTwenty::-webkit-scrollbar-thumb,
+.viewedMovies::-webkit-scrollbar-thumb {
+    background: white;
+    border-radius: .5em;
+}
+
+.searchResults::-webkit-scrollbar {
+    background: transparent;
+    height: 10px;
+}
+
+.searchResults::-webkit-scrollbar-thumb {
+    background: white;
+    border-radius: .5em;
+}

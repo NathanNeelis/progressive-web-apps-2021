@@ -1,0 +1,21 @@
+<%- include('includes/head.ejs'); %>
+
+<body>
+    <header>
+        <%- include('includes/nav.ejs'); %>
+    </header>
+
+    <main>
+        <section class="detailsMovie">
+            <div class="movieWrap">
+                <img src="<%=data.poster_path%>" alt="poster image" class="detailMovieImage">
+                <p class="voteAverage"><%= data.vote_average%></p>
+            </div>
+            <h2 class="movieTitle"><%= data.title%></h2>
+            <p class="movieOverview"><%= data.overview%></p>
+            <p class="releaseData"><%= data.release_date%></p>
+
+        </section>
+    </main>
+    <%- include('includes/scripts.ejs'); %>
+</body>

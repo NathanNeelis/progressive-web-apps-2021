@@ -1,0 +1,25 @@
+nav {
+    background-color: white;
+    width: 100vw;
+}
+
+ul {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    list-style-type: none;
+}
+
+li {
+    padding: 1em;
+}
+
+li a {
+    text-decoration: none;
+    color: gray;
+    font-family: 'Dosis', sans-serif;
+}
+
+li a:hover {
+    color: coral;
+}

@@ -1,0 +1,51 @@
+/* detail page  */
+.detailsMovie {
+    width: 100vw;
+}
+
+
+.movieWrap {
+    width: 100vw;
+    height: 60vh;
+    display: flex;
+    justify-content: center;
+    position: relative;
+    margin-bottom: 2em;
+}
+
+
+.detailMovieImage {
+    height: 100%;
+    /* padding: 2em; */
+    border: 1rem solid coral;
+    margin: 2rem;
+    border-radius: .5rem;
+}
+
+.movieTitle {
+    padding-top: 3rem;
+}
+
+.movieOverview {
+    color: white;
+    padding: 2em;
+    width: min(30rem, 50vw);
+    margin: 0 auto;
+    text-align: center;
+}
+
+.voteAverage {
+    width: 4rem;
+    height: 4rem;
+    background-color: coral;
+    border-radius: 50%;
+    color: white;
+    text-align: center;
+    position: absolute;
+    bottom: -3.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2rem;
+    font-weight: bold;
+}

@@ -1,0 +1,31 @@
+<%- include('includes/head.ejs'); %>
+
+<body>
+    <header>
+        <%- include('includes/nav.ejs'); %>
+    </header>
+
+    <main>
+        <section class="topMovies active">
+            <h2>Top movies</h2>
+            <article class='topTwenty'>
+                <% for (let i = 0; i < data.length; i++) { %>
+                <a href="/movies/<%= data[i].id%>">
+                    <div id="<%= data[i].title %>" class="movie">
+                        <h4>
+                            <%= data[i].title %>
+                        </h4>
+                        <div class="movie-zoom">
+                            <img src="<%=data[i].poster_path%>" alt="poster image">
+                        </div>
+                    </div>
+                </a>
+                <% } %>
+                <!-- renders data here  -->
+            </article>
+        </section>
+        <!-- FIX THIS PAGE ONCE YOU GET THE DATA RIGHT -->
+        <%- include('includes/recentlyViewed.ejs'); %>
+    </main>
+    <%- include('includes/scripts.ejs'); %>
+</body>

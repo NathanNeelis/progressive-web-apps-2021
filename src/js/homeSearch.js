@@ -1,5 +1,7 @@
 const searchButtonIntro = document.querySelector('.searchBtnIntro');
-searchButtonIntro.addEventListener("click", updateSearchIntro);
+if (searchButtonIntro) {
+    searchButtonIntro.addEventListener("click", updateSearchIntro);
+}
 
 function updateSearchIntro() {
     // saving input in local storage

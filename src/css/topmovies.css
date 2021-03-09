@@ -1,0 +1,20 @@
+.topTwenty {
+    width: min(70vw, 60em);
+    overflow-x: scroll;
+    display: grid;
+    /* grid-template-columns: repeat(auto-fit, minmax(13%, 1fr)); */
+    grid-template-columns: repeat(20, 20%);
+
+    justify-self: center;
+    column-gap: 1em;
+    row-gap: 1em;
+    margin: 0 auto;
+    /* margin: 1em auto; */
+    padding-bottom: 1rem;
+    border-radius: .5em;
+    margin-bottom: 5rem;
+}
+
+.topMovies {
+    margin-top: 1em;
+}

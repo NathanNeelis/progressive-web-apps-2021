@@ -1,0 +1,42 @@
+label {
+    display: none;
+}
+
+form {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin: 1em;
+    margin-top: 4em;
+    background-color: coral;
+    padding: 1em;
+    border-radius: .5em;
+    box-shadow: 0px 0px 28px -2px coral;
+}
+
+.searchBtn,
+.searchBtnIntro {
+    padding: 1em;
+    background-color: white;
+    color: gray;
+    border-radius: .3em;
+    border: none;
+
+}
+
+
+.searchBtn:hover,
+.searchBtnIntro:hover {
+    color: coral;
+}
+
+input[type=text] {
+    width: 100%;
+    border-radius: .3em;
+    border: 2px solid white;
+    padding: 1em;
+    display: block;
+    margin-right: 1em;
+}

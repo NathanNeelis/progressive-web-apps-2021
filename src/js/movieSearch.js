@@ -1,7 +1,8 @@
-setSearchBar()
-
 const searchButton = document.querySelector('.searchBtn');
-searchButton.addEventListener("click", updateSearch);
+if (searchButton) {
+    setSearchBar()
+    searchButton.addEventListener("click", updateSearch);
+}
 
 
 
