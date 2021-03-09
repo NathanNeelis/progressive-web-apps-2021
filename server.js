@@ -8,13 +8,13 @@ const port = 4000;
 // imports
 
 // import routes
-const home = require('./routes/home');
-const search = require('./routes/search');
-const searchDetail = require('./routes/searchDetail');
-const searchRedirect = require('./routes/searchRedirect');
-const movies = require('./routes/movies');
-const movieDetail = require('./routes/movieDetail');
-const notFound = require('./routes/404');
+const home = require('./renders/home');
+const search = require('./renders/search');
+const searchDetail = require('./renders/searchDetail');
+const searchRedirect = require('./renders/searchRedirect');
+const movies = require('./renders/movies');
+const movieDetail = require('./renders/movieDetail');
+const notFound = require('./renders/404');
 
 
 app
