@@ -1,22 +1,21 @@
 # Progressive Web Apps @cmda-minor-web · 20-21
 
-<!-- Add a link to your live demo in Github Pages 🌐-->
+### View the app
+:earth_americas:  [live website](https://progressive-movieapp.herokuapp.com/)
 
-<!-- ☝️ replace this description with a description of your own work -->
 
 ### Description
 Do you also spend too much time looking for a decent movie to watch?  
 With this progressive web application you can see right away what the top movies are at this very moment! 
 Find a movie to your liking, and make some popcorn instead of spending minutes to find a good title.  
-
-<!-- Add a nice image here at the end of the week, showing off your shiny frontend 📸 -->
+  
 ![screenshotFront](https://user-images.githubusercontent.com/55492381/110913908-fef5b700-8315-11eb-8b31-0c65f7b02cc5.png)  
 
-<!-- Maybe a table of contents here? 📚 -->
+
 ### Table of Contents  
 to do
 
-<!-- How about a section that describes how to install this project? 🤓 -->
+
 ### Getting started
 
 #### Cloning the repo
@@ -37,8 +36,21 @@ to do
     npm install
     ```  
 
+### Packages
+To update
 
-<!-- ...but how does one use this project? What are its features 🤔 -->
+* Body-parser
+* Express
+* ejs
+* Node-fetch
+* Node-localstorage
+* NPM run all
+* Gulp
+* Gulp autoprefixer
+* Gulp clean css
+* Gulp concat
+
+
 ### Features
 **Search for a movie**  
 You can search for your favorite movie.   
