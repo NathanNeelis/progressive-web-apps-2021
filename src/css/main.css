@@ -32,3 +32,19 @@ h2 {
 section a {
     text-decoration: none;
 }
+
+.webError {
+    text-align: center;
+    color: white;
+    margin-top: 2rem;
+}
+
+.imgWebError {
+    width: min(60rem, 90%);
+    margin: 0 auto;
+}
+
+.imgWebError img {
+    max-height: 50vh;
+    margin-top: 2rem;
+}

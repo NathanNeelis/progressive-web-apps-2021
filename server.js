@@ -15,7 +15,7 @@ const searchRedirect = require('./renders/searchRedirect');
 const movies = require('./renders/movies');
 const movieDetail = require('./renders/movieDetail');
 const notFound = require('./renders/404');
-
+const offline = require('./renders/offline');
 
 app
     .use(express.static(__dirname + "/static")) // this is used to attach the front-end and styling
@@ -34,6 +34,7 @@ app
     .get('/search/:id', searchDetail) // Routing
     .get("/movies", movies) // Routing
     .get('/movies/:id', movieDetail) // Routing
+    .get('/offline', offline) // Routing
 
 
     .post("/", searchRedirect) // Routing

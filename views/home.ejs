@@ -1,33 +1,31 @@
 <%- include('includes/head.ejs'); %>
 
-<body>
-    <header>
-        <%- include('includes/nav.ejs'); %>
-    </header>
+<header>
+    <%- include('includes/nav.ejs'); %>
+</header>
 
-    <main>
-        <section class="intro active">
-            <article class="formWrap">
+<main>
+    <section class="intro active">
+        <article class="formWrap">
 
-                <form action="/search" method="POST">
-                    <label for="searchField">Search:</label>
-                    <input type="text" placeholder="Search for a movie" name="searchMovieName" id="searchMovie"
-                        class="searchFieldIntro">
-                    <input type="submit" class="searchBtnIntro" value="search">
-                </form>
+            <form action="/search" method="POST">
+                <label for="searchField">Search:</label>
+                <input type="text" placeholder="Search for a movie" name="searchMovieName" id="searchMovie"
+                    class="searchFieldIntro">
+                <input type="submit" class="searchBtnIntro" value="search">
+            </form>
 
-            </article>
-            <article class="background">
-                <% for (let i = 0; i < data.length; i++) { %>
-                <div id="<%= data[i].title %>" class="movieBgWrap">
-                    <img src="<%=data[i].poster_path%>" alt="poster image">
-                </div>
-                <% } %>
+        </article>
+        <article class="background">
+            <% for (let i = 0; i < data.length; i++) { %>
+            <div id="<%= data[i].title %>" class="movieBgWrap">
+                <img src="<%=data[i].poster_path%>" alt="poster image">
+            </div>
+            <% } %>
 
 
-                <!-- renders data here  -->
-            </article>
-        </section>
-    </main>
-    <%- include('includes/scripts.ejs'); %>
-</body>
+            <!-- renders data here  -->
+        </article>
+    </section>
+</main>
+<%- include('includes/footer.ejs'); %>
