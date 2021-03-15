@@ -4,6 +4,7 @@ const CORE_ASSETS = [
     '/css/style.css',
     '/connection-error.svg',
     '/js/index.js',
+    '/manifest.json',
 ];
 
 self.addEventListener('install', (event) => {
@@ -27,8 +28,7 @@ self.addEventListener('fetch', (event) => {
 
     if (event.request.method === 'GET' && CORE_ASSETS.includes(getPathName(event.request.url))) {
         // if (event.request.method === 'GET' && CORE_ASSETS.includes(new URL(event.request.url).pathname)) {
-        // console.log('Core get request: ', new URL(event.request.url).pathname);
-        // console.log('test pathnames', getPathName(event.request.url))
+        console.log('Core get request: ', event.request.url);
         // cache only strategy
         event.respondWith(
             caches.open(CORE_CACHE_VERSION)
