@@ -1,6 +1,4 @@
 // Imports 
-const filterObject = require('../utils/transformObject');
-const removeGarbage = require('../utils/imageRequired');
 const getData = require('../utils/getData');
 
 
@@ -19,11 +17,7 @@ async function movies(req, res) {
         let url = '';
         url = endpoint + discover + movie + key + language + sort + page;
 
-        // getting the data and transforming
-        const incomingData = await getData(url); // FETCH THE DATA
-        const cleanData = removeGarbage(incomingData.results); // REMOVE DATA WITH NO IMAGES
-        const transformData = filterObject(cleanData); // TRANSFORM OBJECT TO OBJECT WITH ITEMS I'LL USE
-        const data = transformData;
+        const data = await getData(url); // FETCH THE DATA
 
         res.render("movies.ejs", {
             data: data,

@@ -1,6 +1,4 @@
 // Imports 
-const filterSingleObject = require('../utils/transformSingleObject');
-const removeGarbage = require('../utils/imageRequired');
 const getData = require('../utils/getData');
 
 
@@ -14,10 +12,7 @@ async function movieDetail(req, res) {
         const id = req.params.id; // ID FROM URL
         let url = endpoint + movie + id + key;
 
-        // getting the data and transforming
-        const incomingData = await getData(url); // FETCH THE DATA
-        const transformData = filterSingleObject(incomingData); // TRANSFORM OBJECT TO OBJECT WITH ITEMS I'LL USE
-        const data = transformData;
+        const data = await getData(url); // FETCH THE DATA
 
         res.render("detailpage.ejs", {
             data: data,

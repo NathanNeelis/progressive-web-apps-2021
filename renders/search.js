@@ -1,14 +1,5 @@
 // imports 
-const filterObject = require('../utils/transformObject');
-const removeGarbage = require('../utils/imageRequired');
 const getData = require('../utils/getData');
-
-
-// if (typeof localStorage === "undefined" || localStorage === null) {
-//     var LocalStorage = require('node-localstorage').LocalStorage;
-//     localStorage = new LocalStorage('./scratch');
-// }
-
 
 //search page
 async function search(req, res) {
@@ -23,14 +14,9 @@ async function search(req, res) {
     const preSearch = '&query=';
 
     let search = req.body.searchMovieName;
-
     let searchUrl = endpoint + searching + movie + key + language + adult + preSearch + search;
 
-    // getting the data and transforming
-    const incomingData = await getData(searchUrl); // FETCH THE DATA
-    const cleanData = removeGarbage(incomingData.results); // REMOVE DATA WITH NO IMAGES
-    const transformData = filterObject(cleanData); // TRANSFORM OBJECT TO OBJECT WITH ITEMS I'LL USE
-    const data = transformData;
+    const data = await getData(searchUrl); // FETCH THE DATA
 
 
     res.render("search.ejs", {
