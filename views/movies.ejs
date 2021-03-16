@@ -6,10 +6,10 @@
 
 <main>
     <section class="topMovies active">
-        <h2>Top movies</h2>
+        <h2>Top movies b</h2>
         <article class='topTwenty'>
             <% for (let i = 0; i < data.length; i++) { %>
-            <a href="/movies/<%= data[i].id%>">
+            <a href="/movie/<%= data[i].id%>">
                 <div id="<%= data[i].title %>" class="movie">
                     <h4>
                         <%= data[i].title %>

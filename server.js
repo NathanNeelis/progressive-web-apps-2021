@@ -33,7 +33,7 @@ app
     .get("/search", search) // Routing
     .get('/search/:id', searchDetail) // Routing
     .get("/movies", movies) // Routing
-    .get('/movies/:id', movieDetail) // Routing
+    .get('/movie/:id', movieDetail) // Routing
     .get('/offline', offline) // Routing
 
 
