@@ -156,8 +156,32 @@ If you don't have internet, render this page from the cache. This is always bett
 ```
 
 
+**Update caches**
+In the core assets are also the css files and client-side javascript files. 
+If you update one of those, it should also be updated in the caches, otherwise you might get errors. 
+To do this, I build a version checker in. Although it is not best practice how I've done this. 
+At the moment I do this manually in the service worker and increment the version manually. 
+You can do this automatically if you update your files, but that requires more study of my part. 
+In the activation of the service worker I do however check for the version of the cache. 
+If the cache is outdated, it removes the old cache, so the user isn't stacking old caches. 
+```javascript
+self.addEventListener('activate', (event) => {
+    event.waitUntil(clients.claim()); // Service workers works direct instead after a reload in multiple browser tabs
 
-
+    // removes old cache if version is updated
+    event.waitUntil(
+        caches.keys() 
+        .then((keylist) => {
+            return Promise.all([
+                keylist
+                .filter(cacheKey => cacheKey.includes('fam-cache') && cacheKey !== CORE_CACHE_NAME) // array of strings with caches that include fam-cache but are not the current version
+                .forEach(outdatedCache => caches.delete(outdatedCache))
+            ])
+        })
+    )
+});
+```
+Also in this code example I use `clients.claim()`. This activates the service-worker through multiple tabs. Meaning if you have multiple tabs open with this app, it corresponds with eachother.
 
 
 
