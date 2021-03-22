@@ -68,6 +68,101 @@ You can search for your favorite movie.
   
   Update this image
 
+#### Service-worker
+I installed a service worker that caches an offline page.  
+Once you have been on my web application, and your internet connection fails you will now see an offline page instead of the usual no internet page.  
+
+```javascript
+const CORE_ASSETS = [
+    '/offline',
+    '/css/critical.css',
+    '/css/style.css',
+    '/connection-error.svg',
+    '/js/index.js',
+];
+
+self.addEventListener('install', (event) => {
+    console.log('install the service worker');
+
+    // pre saves the core assets in the cache
+    event.waitUntil(
+        caches.open(CORE_CACHE_NAME).then((cache) => {
+            return cache.addAll(CORE_ASSETS)
+                .then(() => self.skipWaiting());
+        })
+    );
+});
+
+self.addEventListener('fetch', (event) => {
+    ...
+    // open cache and fetch or save render pages. If not able to: render offline page
+        event.respondWith(
+            caches.open('html-cache')
+            .then(cache => cache.match(event.request))
+            .then(response => response ? response : fetchAndCache(event.request, 'html-cache'))
+            .catch(() => {
+                return caches.open(CORE_CACHE_NAME)
+                    .then(cache => cache.match('/offline'))
+            })
+        )
+```
+  
+![Schermafbeelding 2021-03-22 om 15 24 15](https://user-images.githubusercontent.com/55492381/112005043-acd94080-8b22-11eb-8bcd-b37e117c0101.png)
+  
+**Caches and faster loading**
+My service worker also caches all the pages you visit.  
+I fully realise this might not be the best strategy if you have a very large application, but for a small one like mine, this is in my opinion acceptable.
+The next time you visit a page that you've already visited, it renders it from the cache.  
+This has advantages and disadvantages.   
+The advantages are: faster loading (like alot) and you can also visit the pages when your internet connection fails.  
+The disadvantage is that you render out of date content from the cache.  
+  
+For this disadvantage I save the last updated content again to the cache while its rendering. This means, the next time you visit that page you will get the updated content.
+Not an ideal solution, but perhaps acceptable for pages that almost never changes its content.
+```javascript
+        event.respondWith(
+            caches.open('html-cache')
+            .then(cache => cache.match(event.request))
+            .then(response => response ? response : fetchAndCache(event.request, 'html-cache'))
+            .catch(() => {
+                return caches.open(CORE_CACHE_NAME)
+                    .then(cache => cache.match('/offline'))
+            })
+        )
+
+        event.waitUntil(
+            fetchAndCache(event.request, 'html-cache')
+        )
+
+```
+
+**Render from web but cache it all the same**
+I have the /movie page that shows the most popular movies at that time.  
+This isnt a page that you want to have outdated. So I wrote some exceptional rules for this page.  
+If you have internet, render this page from the internet and save it in the cache.  
+If you don't have internet, render this page from the cache. This is always better then no page at all, although it might be outdated.  
+```javascript
+
+    // MOVIE PAGE SPECIFIC
+    else if (htmlGetRequest(event.request) && event.request.url.match('/movies')) {
+        event.respondWith(
+            fetchAndCache(event.request, 'html-cache')
+            .catch(() => {
+                return caches.open('html-cache')
+                    .then(cache => cache.match('/movies'))
+            })
+        )
+    }
+```
+
+
+
+
+
+
+
+
+
 #### Compression
 To make this app even faster I compress my files by using Gzip compression.  
 This might be overrated in this small app, but I wanted to see what it does and how it works. So to test compression in my app I created a testing page with a string of text that I repeat 10.000 times.   
@@ -101,6 +196,32 @@ It turns out, using Gzip as a compression is fairly easy. Just install the packa
 ```
 After the commpression the file went from 500kb to only 180bytes. Thats an enourmes gain!  
 <img src="https://user-images.githubusercontent.com/55492381/111987065-03d51a80-8b0f-11eb-826f-c11408c934a8.png" width="500" />  
+
+#### Minify
+Every character costs bytes in your file. And you want every file to be as less bytes as it can be. Less bytes is faster loading, thats also why we compress the files as described above. Another step to lessen the amount of bytes is minifying your files. This means that you re-write the code with short names and less space. To rewrite these code files you can use packages like gulp-clean-css and gulp-minify. There are more, but in this project I am already using gulp to concatenate files. In the code example below I concat my css and minify it by using gulp.
+
+```javascript
+return gulp.src([
+        './src/css/main.css',
+        './src/css/nav.css',
+        './src/css/forms.css',
+        './src/css/detailpage.css',
+        './src/css/intro.css',
+        './src/css/movieDisplay.css',
+        './src/css/scrollbar.css',
+        './src/css/search.css',
+        './src/css/topmovies.css',
+        './src/css/recentlyViewed.css',
+    ])
+    .pipe(concat('style.css'))
+    .pipe(cleanCSS())
+    .pipe(autoprefixer({
+        cascade: false
+    }))
+    .pipe(gulp.dest('./static/css'))
+```
+For the javascript part I used gulp-minify which reduces the size of all my javascript code.
+
 
 #### Critical CSS
 Performance is all about perceived performance. And part of that is how to get most of the website as quickly to the user. Critical CSS is a big part of that for bigger websites or apps but I researched this topic nontheless for my simple app.   
