@@ -4,7 +4,7 @@
 :earth_americas:  [live website](https://progressive-movieapp.herokuapp.com/)
 
 
-### Description
+## Description
 Do you also spend too much time looking for a decent movie to watch?  
 With this progressive web application you can see right away what the top movies are at this very moment! 
 Find a movie to your liking, and make some popcorn instead of spending minutes to find a good title.  
@@ -12,7 +12,7 @@ Find a movie to your liking, and make some popcorn instead of spending minutes t
 ![screenshotFront](https://user-images.githubusercontent.com/55492381/110913908-fef5b700-8315-11eb-8b31-0c65f7b02cc5.png)  
 
 
-### Table of Contents  
+## Table of Contents  
 [View the app]()  
 [Description]()  
 [Getting started]()  
@@ -25,9 +25,9 @@ Find a movie to your liking, and make some popcorn instead of spending minutes t
 
 
 
-### Getting started
+## Getting started
 
-#### Cloning the repo
+### Cloning the repo
 1. Create your git repo  
     ```bash
     mkdir foldername  
@@ -45,7 +45,7 @@ Find a movie to your liking, and make some popcorn instead of spending minutes t
     npm install
     ```  
 
-### Packages
+## Packages
 To update
 
 * Body-parser
@@ -61,14 +61,14 @@ To update
 * Compression
 
 
-### Features
+## Features
 **Search for a movie**  
 You can search for your favorite movie.   
 ![search](https://user-images.githubusercontent.com/55492381/108068657-a870c200-7062-11eb-9323-cce1a340ac02.gif)  
   
   Update this image
 
-#### Service-worker
+### Service-worker
 I installed a service worker that caches an offline page.  
 Once you have been on my web application, and your internet connection fails you will now see an offline page instead of the usual no internet page.  
 
@@ -109,7 +109,7 @@ self.addEventListener('fetch', (event) => {
   
 ![Schermafbeelding 2021-03-22 om 15 24 15](https://user-images.githubusercontent.com/55492381/112005043-acd94080-8b22-11eb-8bcd-b37e117c0101.png)
   
-**Caches and faster loading**
+#### Caches and faster loading
 My service worker also caches all the pages you visit.  
 I fully realise this might not be the best strategy if you have a very large application, but for a small one like mine, this is in my opinion acceptable.
 The next time you visit a page that you've already visited, it renders it from the cache.  
@@ -136,7 +136,7 @@ Not an ideal solution, but perhaps acceptable for pages that almost never change
 
 ```
 
-**Render from web but cache it all the same**
+#### Render from web but cache it all the same
 I have the /movie page that shows the most popular movies at that time.  
 This isnt a page that you want to have outdated. So I wrote some exceptional rules for this page.  
 If you have internet, render this page from the internet and save it in the cache.  
@@ -156,7 +156,7 @@ If you don't have internet, render this page from the cache. This is always bett
 ```
 
 
-**Update caches**
+#### Update caches
 In the core assets are also the css files and client-side javascript files. 
 If you update one of those, it should also be updated in the caches, otherwise you might get errors. 
 To do this, I build a version checker in. Although it is not best practice how I've done this. 
@@ -187,7 +187,7 @@ Also in this code example I use `clients.claim()`. This activates the service-wo
 
 
 
-#### Compression
+## Compression
 To make this app even faster I compress my files by using Gzip compression.  
 This might be overrated in this small app, but I wanted to see what it does and how it works. So to test compression in my app I created a testing page with a string of text that I repeat 10.000 times.   
 ```javascript
@@ -221,7 +221,7 @@ It turns out, using Gzip as a compression is fairly easy. Just install the packa
 After the commpression the file went from 500kb to only 180bytes. Thats an enourmes gain!  
 <img src="https://user-images.githubusercontent.com/55492381/111987065-03d51a80-8b0f-11eb-826f-c11408c934a8.png" width="500" />  
 
-#### Minify
+### Minify
 Every character costs bytes in your file. And you want every file to be as less bytes as it can be. Less bytes is faster loading, thats also why we compress the files as described above. Another step to lessen the amount of bytes is minifying your files. This means that you re-write the code with short names and less space. To rewrite these code files you can use packages like gulp-clean-css and gulp-minify. There are more, but in this project I am already using gulp to concatenate files. In the code example below I concat my css and minify it by using gulp.
 
 ```javascript
@@ -247,7 +247,7 @@ return gulp.src([
 For the javascript part I used gulp-minify which reduces the size of all my javascript code.
 
 
-#### Critical CSS
+### Critical CSS
 Performance is all about perceived performance. And part of that is how to get most of the website as quickly to the user. Critical CSS is a big part of that for bigger websites or apps but I researched this topic nontheless for my simple app.   
 Critical CSS is a file with the most important css for the page. So which styling do I need to give the user all the styling he needs to view the page. This means you start looking at the styling for the first viewport, above the fold they call it. Everything below can wait a second longer to load because its not visible on the screen anyway. So gathering the styling only needed for that specific page and only for the items above the fold. Put all these styles in a critical css style sheet and load it first.
 
@@ -261,7 +261,7 @@ In the screenshot below you can see the difference between the stylesheets cover
 
 ![Schermafbeelding 2021-03-22 om 14 24 21](https://user-images.githubusercontent.com/55492381/111996432-4ea85f80-8b1a-11eb-986c-ce371f715eb7.png)
 
-### The API
+## The API
 This API contains information about movies and tv-shows.   
 You can search for movies or shows or filter on genre / collections and so on. For example, you can show the top movies at this moment.  
 
@@ -269,7 +269,7 @@ According to the documentation there is no rate limite for this API since decemb
 
 To find out more what this API can do, please read more on [ThemovieDB API documentation](https://developers.themoviedb.org/3/getting-started/introduction)  
 
-#### API data
+### API data
 <details>
   <summary>Example single data file</summary>
   
@@ -813,7 +813,7 @@ To find out more what this API can do, please read more on [ThemovieDB API docum
 </details>
 
 <!-- Maybe a checklist of done stuff and stuff still on your wishlist? ✅ -->
-### Project status 
+## Project status 
 * ✅  Render hello world server side   
 * ✅  Fetching API server side   
 * ✅  Re-create wep app with ejs templating  
@@ -840,10 +840,10 @@ To find out more what this API can do, please read more on [ThemovieDB API docum
 
 
 <!-- How about a license here? 📜 (or is it a licence?) 🤷 -->
-### License
+## License
 [MIT](https://github.com/NathanNeelis/progressive-web-apps-2021/blob/master/LICENSE)  
 
-### Resources
+## Resources
 [express](https://expressjs.com/en/starter/installing.html)  
 [EJS](https://ejs.co/#install)  
 [npm localstorage](https://www.npmjs.com/package/node-localstorage)  
