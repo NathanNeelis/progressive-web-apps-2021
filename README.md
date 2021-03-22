@@ -13,7 +13,16 @@ Find a movie to your liking, and make some popcorn instead of spending minutes t
 
 
 ### Table of Contents  
-to do
+[View the app]()  
+[Description]()  
+[Getting started]()  
+[Packages]()  
+[Features]()  
+[API]()  
+[Project status]()  
+[License]()  
+[Resources]()  
+
 
 
 ### Getting started
@@ -49,6 +58,7 @@ To update
 * Gulp autoprefixer
 * Gulp clean css
 * Gulp concat
+* Compression
 
 
 ### Features
@@ -88,8 +98,10 @@ It turns out, using Gzip as a compression is fairly easy. Just install the packa
     // fallback to standard filter function
     return compression.filter(req, res)
     }
+```
+After the commpression the file went from 500kb to only 180bytes. Thats an enourmes gain!  
+<img src="https://user-images.githubusercontent.com/55492381/111987065-03d51a80-8b0f-11eb-826f-c11408c934a8.png" width="400" />  
 
-````
 
 
 ### The API
@@ -648,15 +660,25 @@ To find out more what this API can do, please read more on [ThemovieDB API docum
 * ✅  Render hello world server side   
 * ✅  Fetching API server side   
 * ✅  Re-create wep app with ejs templating  
-* ✅  Render api data with ejs 
+* ✅  Render api data with ejs  
 * ✅  Get the search feature to work with `post`  
 * ✅  Refactor code modulair   
+* ✅  Deploy the app on heroku  
 * ✅  Make a build script for CSS   
 * ✅  Make a build script for JS  
-  
+* ✅  Service worker  
+* ✅  Render offline page  
+* ✅  Render core assets like css and javascript  
+* ✅  Save pages to cache  
+* ✅  Render pages from cache  
+* ✅  Render specific pages from web unless offline  
+* ✅  Compress files with Gzip  
+
+
+* ❌  Finish readme   
 * ❌  Static HTML build script  
 * ❌  Feature recently watched movie  
-* ❌  Deploy app 
+* ❌  Search doenst work optimal, maybe sessions  
 
 
 
