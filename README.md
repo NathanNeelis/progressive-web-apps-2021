@@ -58,7 +58,40 @@ You can search for your favorite movie.
   
   Update this image
 
-<!-- What external data source is featured in your project and what are its properties 🌠 -->
+#### Compression
+To make this app even faster I compress my files by using Gzip compression.  
+This might be overrated in this small app, but I wanted to see what it does and how it works. So to test compression in my app I created a testing page with a string of text that I repeat 10.000 times.   
+```javascript
+    .get('/testcomp', (req, res) => {
+        const payload = "this is a testing string if the app gets faster..."
+        res.send(payload.repeat(10000))
+    }) // Testing compression
+```
+This resulted in a page of 500kb. This is enough of a size that you can see big results when you start compressing.   
+
+<img src="https://user-images.githubusercontent.com/55492381/111985404-dd15e480-8b0c-11eb-9e74-256cd722c8d9.png" width="400" />  
+  
+It turns out, using Gzip as a compression is fairly easy. Just install the package and use it. There are some options you can use though. I used a threshold option here and gave it a value of 0. This means that it compresses all the files that are bigger then 0 bytes. You could if you want set it to 1kb if you want to skip the comporession of very small files. I also use a filter funciton `shouldCompress` that checks if the request headers are set to `x-no-compression` if so, it doenst compress those files.  
+
+```javascript
+    .use(compression({
+        threshold: 0, // compress everyfile that is more then 0 bytes
+        filter: shouldCompress, // dont compress if header is x-no-compression
+    }))
+
+    function shouldCompress(req, res) {
+    if (req.headers['x-no-compression']) {
+        // don't compress responses with this request header
+        return false
+    }
+
+    // fallback to standard filter function
+    return compression.filter(req, res)
+    }
+
+````
+
+
 ### The API
 This API contains information about movies and tv-shows.   
 You can search for movies or shows or filter on genre / collections and so on. For example, you can show the top movies at this moment.  
@@ -637,4 +670,7 @@ To find out more what this API can do, please read more on [ThemovieDB API docum
 [npm localstorage](https://www.npmjs.com/package/node-localstorage)  
 [node localstorage](https://stackoverflow.com/questions/10358100/how-to-access-localstorage-in-node-js) stackoverflow  
 [npm gulp](https://www.npmjs.com/package/gulp)  
+[compression with node](https://medium.com/@victor.valencia.rico/gzip-compression-with-node-js-cc3ed74196f9)  
+[video gzip with node](https://www.youtube.com/watch?v=jZ6x5Ab7Bgc)  
+[npm compression](https://www.npmjs.com/package/compression)  
 

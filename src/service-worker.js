@@ -21,7 +21,7 @@ self.addEventListener('install', (event) => {
 });
 
 self.addEventListener('activate', (event) => {
-    // event.waitUntil(clients.claim()); // Service workers works direct instead after a reload
+    event.waitUntil(clients.claim()); // Service workers works direct instead after a reload in multiple browser tabs
     // resource https://developer.mozilla.org/en-US/docs/Web/API/Clients/claim 
     console.log('activate service worker. Removing old cache versions if needed');
 
