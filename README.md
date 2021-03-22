@@ -18,6 +18,12 @@ Find a movie to your liking, and make some popcorn instead of spending minutes t
 [Getting started]()  
 [Packages]()  
 [Features]()  
+> [Build scripts]()  
+> [Service worker]()  
+> [Compression]()  
+> [Minify]()  
+> [Critical CSS]()  
+
 [API]()  
 [Project status]()  
 [License]()  
@@ -58,15 +64,13 @@ To update
 * Gulp autoprefixer
 * Gulp clean css
 * Gulp concat
+* Gulp minify
 * Compression
 
 
 ## Features
-**Search for a movie**  
-You can search for your favorite movie.   
-![search](https://user-images.githubusercontent.com/55492381/108068657-a870c200-7062-11eb-9323-cce1a340ac02.gif)  
-  
-  Update this image
+### Build scripts
+-- something about the build scripts
 
 ### Service-worker
 I installed a service worker that caches an offline page.  
@@ -187,7 +191,7 @@ Also in this code example I use `clients.claim()`. This activates the service-wo
 
 
 
-## Compression
+### Compression
 To make this app even faster I compress my files by using Gzip compression.  
 This might be overrated in this small app, but I wanted to see what it does and how it works. So to test compression in my app I created a testing page with a string of text that I repeat 10.000 times.   
 ```javascript
