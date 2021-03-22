@@ -79,7 +79,7 @@ This might be overrated in this small app, but I wanted to see what it does and 
 ```
 This resulted in a page of 500kb. This is enough of a size that you can see big results when you start compressing.   
 
-<img src="https://user-images.githubusercontent.com/55492381/111985404-dd15e480-8b0c-11eb-9e74-256cd722c8d9.png" width="400" />  
+<img src="https://user-images.githubusercontent.com/55492381/111985404-dd15e480-8b0c-11eb-9e74-256cd722c8d9.png" width="500" />  
   
 It turns out, using Gzip as a compression is fairly easy. Just install the package and use it. There are some options you can use though. I used a threshold option here and gave it a value of 0. This means that it compresses all the files that are bigger then 0 bytes. You could if you want set it to 1kb if you want to skip the comporession of very small files. I also use a filter funciton `shouldCompress` that checks if the request headers are set to `x-no-compression` if so, it doenst compress those files.  
 
@@ -100,9 +100,21 @@ It turns out, using Gzip as a compression is fairly easy. Just install the packa
     }
 ```
 After the commpression the file went from 500kb to only 180bytes. Thats an enourmes gain!  
-<img src="https://user-images.githubusercontent.com/55492381/111987065-03d51a80-8b0f-11eb-826f-c11408c934a8.png" width="400" />  
+<img src="https://user-images.githubusercontent.com/55492381/111987065-03d51a80-8b0f-11eb-826f-c11408c934a8.png" width="500" />  
 
+#### Critical CSS
+Performance is all about perceived performance. And part of that is how to get most of the website as quickly to the user. Critical CSS is a big part of that for bigger websites or apps but I researched this topic nontheless for my simple app.   
+Critical CSS is a file with the most important css for the page. So which styling do I need to give the user all the styling he needs to view the page. This means you start looking at the styling for the first viewport, above the fold they call it. Everything below can wait a second longer to load because its not visible on the screen anyway. So gathering the styling only needed for that specific page and only for the items above the fold. Put all these styles in a critical css style sheet and load it first.
 
+```html
+    <link rel="stylesheet" href="css/critical.css">
+    <link rel="stylesheet" href="css/style.css" defer>
+```
+In the code example above you see that the critical CSS is loaded while it is render blocking. The other style sheet (style.css), can wait till all the otherthings are loaded. You can also choose to load it Async, so that it loads while it is loading your other code as well.  
+  
+In the screenshot below you can see the difference between the stylesheets coverage. About 72% of the normal stylesheet is not needed in this specific page at all, while there is no unused css code for the critical css stylesheet.  
+
+![Schermafbeelding 2021-03-22 om 14 24 21](https://user-images.githubusercontent.com/55492381/111996432-4ea85f80-8b1a-11eb-986c-ce371f715eb7.png)
 
 ### The API
 This API contains information about movies and tv-shows.   

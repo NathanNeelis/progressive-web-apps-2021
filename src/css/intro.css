@@ -3,7 +3,7 @@
 .intro {
     width: 100vw;
     height: 95%;
-    position: relative;
+    /* position: relative; */
 }
 
 .background {
@@ -24,10 +24,9 @@
 
 .formWrap {
     position: absolute;
-    top: calc(30% - 15vw);
-    left: calc(50% - 35vw);
-    width: 70vw;
-    /* height: 10em; */
+    top: 30vh;
+    left: calc(50% - min(30rem, 48%));
+    width: min(60rem, 90%);
     z-index: 2;
 }
 

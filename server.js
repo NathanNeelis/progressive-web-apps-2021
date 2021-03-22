@@ -2,7 +2,7 @@
 
 const express = require('express');
 const bodyParser = require("body-parser"); // load body parser for http requests
-const compression = require('compression')
+const compression = require('compression');
 const app = express();
 const port = process.env.PORT || 4000
 

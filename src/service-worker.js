@@ -1,7 +1,8 @@
-const CORE_CACHE_VERSION = 'v1'
+const CORE_CACHE_VERSION = 'v2'
 const CORE_CACHE_NAME = 'fam-cache' + CORE_CACHE_VERSION;
 const CORE_ASSETS = [
     '/offline',
+    '/css/critical.css',
     '/css/style.css',
     '/connection-error.svg',
     '/js/index.js',
