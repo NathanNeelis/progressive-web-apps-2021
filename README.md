@@ -13,21 +13,21 @@ Find a movie to your liking, and make some popcorn instead of spending minutes t
 
 
 ## Table of Contents  
-[View the app]()  
-[Description]()  
-[Getting started]()  
-[Packages]()  
-[Features]()  
-> [Build scripts]()  
-> [Service worker]()  
-> [Compression]()  
-> [Minify]()  
-> [Critical CSS]()  
+[View the app](https://github.com/NathanNeelis/progressive-web-apps-2021#view-the-app)  
+[Description](https://github.com/NathanNeelis/progressive-web-apps-2021#description)  
+[Getting started](https://github.com/NathanNeelis/progressive-web-apps-2021#getting-started)  
+[Packages](https://github.com/NathanNeelis/progressive-web-apps-2021#packages)  
+[Features](https://github.com/NathanNeelis/progressive-web-apps-2021#features)  
+> [Build scripts](https://github.com/NathanNeelis/progressive-web-apps-2021#build-scripts)  
+> [Service worker](https://github.com/NathanNeelis/progressive-web-apps-2021#service-worker)  
+> [Compression](https://github.com/NathanNeelis/progressive-web-apps-2021#compression)  
+> [Minify](https://github.com/NathanNeelis/progressive-web-apps-2021#minify)  
+> [Critical CSS](https://github.com/NathanNeelis/progressive-web-apps-2021#critical-css)  
 
-[API]()  
-[Project status]()  
-[License]()  
-[Resources]()  
+[API](https://github.com/NathanNeelis/progressive-web-apps-2021#the-api)  
+[Project status](https://github.com/NathanNeelis/progressive-web-apps-2021#project-status)  
+[License](https://github.com/NathanNeelis/progressive-web-apps-2021#license)  
+[Resources](https://github.com/NathanNeelis/progressive-web-apps-2021#resources)  
 
 
 
@@ -52,13 +52,10 @@ Find a movie to your liking, and make some popcorn instead of spending minutes t
     ```  
 
 ## Packages
-To update
-
 * Body-parser
 * Express
 * ejs
 * Node-fetch
-* Node-localstorage
 * NPM run all
 * Gulp
 * Gulp autoprefixer
@@ -274,6 +271,7 @@ For the javascript part I used gulp-minify which reduces the size of all my java
 
 ### Critical CSS
 Performance is all about perceived performance. And part of that is how to get most of the website as quickly to the user. Critical CSS is a big part of that for bigger websites or apps but I researched this topic nontheless for my simple app.   
+  
 Critical CSS is a file with the most important css for the page. So which styling do I need to give the user all the styling he needs to view the page. This means you start looking at the styling for the first viewport, above the fold they call it. Everything below can wait a second longer to load because its not visible on the screen anyway. So gathering the styling only needed for that specific page and only for the items above the fold. Put all these styles in a critical css style sheet and load it first.
 
 ```html
@@ -862,9 +860,11 @@ To find out more what this API can do, please read more on [ThemovieDB API docum
 * ✅  Compress files with Gzip  
 * ✅  Minify CSS and JS
 * ✅  Apply critical CSS before the rest of the css
+* ✅  Finish readme 
 
-
-* ❌  Finish readme   
+To update in the future
+* ❌  Font optimalization 
+* ❌  Responsive images  
 * ❌  Static HTML build script  
 * ❌  Feature recently watched movie  
 * ❌  Search doenst work optimal, maybe sessions  
