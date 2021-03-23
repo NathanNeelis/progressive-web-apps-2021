@@ -70,7 +70,28 @@ To update
 
 ## Features
 ### Build scripts
--- something about the build scripts
+This course I was introduced to building scripts. 
+With these building scripts I can concatonate and minify my css and js files and write them in a other folder.
+Everytime I start my app, the build scripts will run on pre start. This means that before the apps starts up, it will build new javascript and css files from my original files. I used the NPM package `gulp` for this. Below here is an example of how I concatonate and minify my javascript files.  
+  
+```javascript
+const gulp = require('gulp')
+const concat = require('gulp-concat');
+const minify = require('gulp-minify');
+
+return gulp.src([
+        './src/js/homeSearch.js',
+        './src/js/movieSearch.js',
+    ])
+    .pipe(minify({
+        noSource: true,
+        ext: {
+            min: '.js'
+        }
+    }))
+    .pipe(concat('index.js'))
+    .pipe(gulp.dest('./static/js'))
+```
 
 ### Service-worker
 I installed a service worker that caches an offline page.  
@@ -870,4 +891,4 @@ To find out more what this API can do, please read more on [ThemovieDB API docum
 [target url 2](https://stackoverflow.com/questions/45663796/setting-service-worker-to-exclude-certain-urls-only/45670014#45670014)  
 [Declan movies example](https://github.com/cmda-minor-web/progressive-web-apps-2021/tree/master/examples/node-advanced-movies-example)  
 [critical css](https://web.dev/defer-non-critical-css/)  
-
+[Font loading Performance](https://www.youtube.com/watch?v=vTf9HRTWKtM)  
