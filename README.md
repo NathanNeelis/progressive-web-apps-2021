@@ -256,10 +256,15 @@ Performance is all about perceived performance. And part of that is how to get m
 Critical CSS is a file with the most important css for the page. So which styling do I need to give the user all the styling he needs to view the page. This means you start looking at the styling for the first viewport, above the fold they call it. Everything below can wait a second longer to load because its not visible on the screen anyway. So gathering the styling only needed for that specific page and only for the items above the fold. Put all these styles in a critical css style sheet and load it first.
 
 ```html
-    <link rel="stylesheet" href="css/critical.css">
-    <link rel="stylesheet" href="css/style.css" defer>
+    <%- include('criticalCss.ejs'); %>
+
+    <link rel="preload" href="css/style.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript>
+        <link rel="stylesheet" href="css/style.css">
+    </noscript>
+    
 ```
-In the code example above you see that the critical CSS is loaded while it is render blocking. The other style sheet (style.css), can wait till all the otherthings are loaded. You can also choose to load it Async, so that it loads while it is loading your other code as well.  
+In the code example above you see that the critical CSS is included by a other ejs file. In this file all the critical CSS is embedded in a `<style> tag`. The main style.css file loaded async so it is not render blocking. The `link rel="preload"` and `as="style` requests the stylesheet asynchronously. The `unload` attribute in the link allows the CSS to be processed when it finishes loading. "nulling" the `onload` handler once it is used helps some browsers avoid re-calling the handler upon switching the rel attribute. So it says in my [resourse about applying critical CSS](https://web.dev/defer-non-critical-css/).  
   
 In the screenshot below you can see the difference between the stylesheets coverage. About 72% of the normal stylesheet is not needed in this specific page at all, while there is no unused css code for the critical css stylesheet.  
 
@@ -834,6 +839,8 @@ To find out more what this API can do, please read more on [ThemovieDB API docum
 * ✅  Render pages from cache  
 * ✅  Render specific pages from web unless offline  
 * ✅  Compress files with Gzip  
+* ✅  Minify CSS and JS
+* ✅  Apply critical CSS before the rest of the css
 
 
 * ❌  Finish readme   
@@ -856,4 +863,11 @@ To find out more what this API can do, please read more on [ThemovieDB API docum
 [compression with node](https://medium.com/@victor.valencia.rico/gzip-compression-with-node-js-cc3ed74196f9)  
 [video gzip with node](https://www.youtube.com/watch?v=jZ6x5Ab7Bgc)  
 [npm compression](https://www.npmjs.com/package/compression)  
+[clients claim](https://developer.mozilla.org/en-US/docs/Web/API/Clients/claim)  
+[cache storage](https://developer.mozilla.org/en-US/docs/Web/API/CacheStorage)  
+[cache storage keys](https://developer.mozilla.org/en-US/docs/Web/API/CacheStorage/keys)  
+[target url](https://github.com/w3c/ServiceWorker/issues/985#issuecomment-253755588)  
+[target url 2](https://stackoverflow.com/questions/45663796/setting-service-worker-to-exclude-certain-urls-only/45670014#45670014)  
+[Declan movies example](https://github.com/cmda-minor-web/progressive-web-apps-2021/tree/master/examples/node-advanced-movies-example)  
+[critical css](https://web.dev/defer-non-critical-css/)  
 
