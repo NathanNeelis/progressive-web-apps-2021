@@ -2,11 +2,9 @@ const CORE_CACHE_VERSION = 'v2'
 const CORE_CACHE_NAME = 'fam-cache' + CORE_CACHE_VERSION;
 const CORE_ASSETS = [
     '/offline',
-    '/css/critical.css',
     '/css/style.css',
     '/connection-error.svg',
     '/js/index.js',
-    // '/manifest.json',
 ];
 
 self.addEventListener('install', (event) => {
@@ -54,8 +52,6 @@ self.addEventListener('fetch', (event) => {
 
     // MOVIE PAGE SPECIFIC
     else if (htmlGetRequest(event.request) && event.request.url.match('/movies')) {
-        // console.log('yay movies only')
-
         // resource targetting url by client https://github.com/w3c/ServiceWorker/issues/985#issuecomment-253755588
         // resource: https://stackoverflow.com/questions/45663796/setting-service-worker-to-exclude-certain-urls-only/45670014#45670014 
 
@@ -113,6 +109,5 @@ function htmlGetRequest(request) {
 
 function getPathName(requestUrl) {
     const url = new URL(requestUrl);
-    // console.log('url pathname is ', url)
     return url.pathname;
 }
