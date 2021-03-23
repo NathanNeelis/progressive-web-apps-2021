@@ -8,8 +8,12 @@
 
     <!-- css  -->
     <base href="/">
-    <link rel="stylesheet" href="css/critical.css">
-    <link rel="stylesheet" href="css/style.css" defer>
+    <%- include('criticalCss.ejs'); %>
+    <link rel="preload" href="css/style.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript>
+        <link rel="stylesheet" href="css/style.css">
+    </noscript>
+
 
     <!-- FONTS  -->
     <link rel="preconnect" href="https://fonts.gstatic.com">

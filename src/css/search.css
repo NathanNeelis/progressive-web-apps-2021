@@ -23,12 +23,9 @@
 }
 
 .searchWrapper {
-    max-width: calc(100vw - 20em);
-    min-width: calc(50em - 10em);
+    width: min(60rem, 90%);
+    /* max-width: calc(100vw - 20em); */
+    /* min-width: calc(50em - 10em); */
     margin: auto;
-    display: none;
-}
-
-.searchWrapper.active {
-    display: block;
+    /* display: none; */
 }

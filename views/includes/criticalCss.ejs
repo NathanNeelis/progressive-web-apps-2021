@@ -1,0 +1,103 @@
+<style>
+    * {
+        box-sizing: border-box;
+        scroll-behavior: smooth;
+        margin: 0;
+        padding: 0
+    }
+
+    html {
+        overflow-x: hidden
+    }
+
+    body {
+        background-color: #000
+    }
+
+    nav {
+        background-color: #fff;
+        width: 100vw
+    }
+
+    ul {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        list-style-type: none
+    }
+
+    li {
+        padding: 1em
+    }
+
+    li a {
+        text-decoration: none;
+        color: gray;
+        font-family: Dosis, sans-serif
+    }
+
+    label {
+        display: none
+    }
+
+    form {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        margin-top: 4em;
+        background-color: coral;
+        padding: 1em;
+        border-radius: .5em;
+        box-shadow: 0 0 28px -2px coral
+    }
+
+    .searchBtn,
+    .searchBtnIntro {
+        padding: 1em;
+        background-color: #fff;
+        color: gray;
+        border-radius: .3em;
+        border: none
+    }
+
+    input[type=text] {
+        width: 100%;
+        border-radius: .3em;
+        border: 2px solid #fff;
+        padding: 1em;
+        display: block;
+        margin-right: 1em
+    }
+
+    .intro {
+        width: 100vw;
+        display: flex;
+        justify-content: center
+    }
+
+    .background {
+        width: 100vw;
+        height: 100%;
+        background-color: #000;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(20%, 1fr));
+        grid-template-rows: repeat(auto-fit, minmax(25%, 1fr));
+        justify-items: stretch;
+        opacity: .2
+    }
+
+    .movieBgWrap img {
+        width: 100%;
+        height: 100%;
+        background: #d3d3d3
+    }
+
+    .formWrap {
+        position: absolute;
+        top: 30vh;
+        width: min(60rem, 90%);
+        z-index: 2
+    }
+</style>

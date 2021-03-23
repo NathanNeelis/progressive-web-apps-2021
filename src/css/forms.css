@@ -8,7 +8,7 @@ form {
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    margin: 1em;
+    /* margin: 1em; */
     margin-top: 4em;
     background-color: coral;
     padding: 1em;

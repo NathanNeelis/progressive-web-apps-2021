@@ -47,7 +47,7 @@ form {
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    margin: 1em;
+    /* margin: 1em; */
     margin-top: 4em;
     background-color: coral;
     padding: 1em;
@@ -76,8 +76,9 @@ input[type=text] {
 
 .intro {
     width: 100vw;
-    height: 95%;
-    position: relative;
+    /* height: 95%; */
+    display: flex;
+    justify-content: center;
 }
 
 .background {
@@ -93,13 +94,14 @@ input[type=text] {
 
 .movieBgWrap img {
     width: 100%;
+    height: 100%;
+    background: lightgray;
 
 }
 
 .formWrap {
     position: absolute;
     top: 30vh;
-    left: calc(50% - min(30rem, 48%));
     width: min(60rem, 90%);
     z-index: 2;
 }
