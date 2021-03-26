@@ -19,7 +19,7 @@
             <h2 class="searchHeading">Search resulst for <%= searchMovie %></h2>
             <div class="searchResults">
                 <% for (let i = 0; i < data.length; i++) { %>
-                <a href="/movies/<%= data[i].id%>">
+                <a href="/movie/<%= data[i].id%>">
                     <div id="<%= data[i].title %>" class="movie">
                         <h4>
                             <%= data[i].title %>
